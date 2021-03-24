@@ -7,7 +7,7 @@ Build a simple clicker game. It should have the following requirements:
 - Display the current score to the user
 - Clicking a button increments the score by one
 - Have a button where the user can spend points to increase the value of each click
-- Display a warning if the user doesn't have enough points to spend
+- Display an `alert` with the text `You can't afford that!` if the user doesn't have enough points to spend
 - When the user has 100 points, display a victory screen
 - Have a button that resets the game
 
