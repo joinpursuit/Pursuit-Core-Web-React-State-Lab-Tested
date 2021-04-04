@@ -1,1 +1,10 @@
 /* Your code here! */
+.App {
+  margin: 5rem;
+  text-align: center;
+}
+
+.App button {
+  display: block;
+  margin: 1rem auto;
+}
