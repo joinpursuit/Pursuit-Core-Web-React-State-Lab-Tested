@@ -17,7 +17,7 @@ export default class Clicker extends React.Component {
     };
     payPoints = () => {
         const { points, pointsButton, payButton} = this.state;
-        if(this.state.points >= 10){
+        if(points >= 10){
             this.setState({
                 points: points - 10,
                 pointsButton: pointsButton + 1,
