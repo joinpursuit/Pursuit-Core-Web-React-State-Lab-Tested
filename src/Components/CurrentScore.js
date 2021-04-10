@@ -3,12 +3,12 @@ import React from "react"
 class CurrentScore extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {currentscore: 0}
+        this.state = {currentscore: 0, buttonscore: +1}
     }
 
     increment = () => {
         this.setState ((prevState)=>{
-            return {currentscore: prevState.currentscore +1}
+            return {currentscore: prevState.currentscore +1, buttonscore: prevState.buttonscore +1}
         })
     }
 
@@ -28,7 +28,7 @@ class CurrentScore extends React.Component {
             <div>
                 <h2>Current Score : {currentscore}</h2>
                 {/* Clicks: {currentscore} */}
-                <button onClick={this.increment}>+1</button>
+                <button onClick={this.increment}>`{buttonscore}`</button>
                 <br></br>
                 <button onClick={this.decrement}> Pay 10 points to change from +1 to +2 </button>
             </div>
