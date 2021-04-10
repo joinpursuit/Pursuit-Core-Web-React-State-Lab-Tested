@@ -10,16 +10,18 @@ export default class Clicker extends React.Component {
         };
     }
     addPoints = () => {
+        const { points, pointsButton} = this.state;
         this.setState({
-            points: this.state.points + this.state.pointsButton,
+            points: points + pointsButton,
         });
     };
     payPoints = () => {
+        const { points, pointsButton, payButton} = this.state;
         if(this.state.points >= 10){
             this.setState({
-                points: this.state.points - 10,
-                pointsButton: this.state.pointsButton + 1,
-                payButton: this.state.payButton + 1,
+                points: points - 10,
+                pointsButton: pointsButton + 1,
+                payButton: payButton + 1,
             });
         } else {
             alert('You can\'t afford that!')
@@ -38,7 +40,7 @@ export default class Clicker extends React.Component {
         if(points < 100){
             return (
                 <div>
-                    <h1 role='heading'>Current Score: {points}</h1> 
+                    <h1>Current Score: {points}</h1> 
                     <p>
                         <button onClick={this.addPoints}>+{pointsButton}</button>
                     </p>
@@ -50,7 +52,7 @@ export default class Clicker extends React.Component {
         } else {
             return (
                 <div>
-                    <h1 role='heading'>Current Score: {points}</h1> 
+                    <h1>Current Score: {points}</h1> 
                     <h2>You Win!</h2>
                     <p>
                         <button onClick={this.playAgain}>Play again?</button>
