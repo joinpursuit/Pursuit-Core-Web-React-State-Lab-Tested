@@ -53,7 +53,7 @@ class Clicker extends React.Component {
                 <div>
                     <h1>Current Score: {this.state.score}</h1>
                     <h2>You Win!</h2>
-                    <button onClick={this.playAgain}>Play Again?</button>
+                    <button onClick={this.playAgain}>Play again?</button>
                 </div>
             )
         }
