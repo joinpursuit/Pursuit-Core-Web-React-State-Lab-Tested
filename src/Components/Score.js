@@ -40,7 +40,7 @@ class Score extends React.Component {
         if(score < 100) {
         return (
             <div>
-                <h2>Current Score:{score}</h2>
+                <h1>Current Score: {score}</h1>
                 <button onClick={this.increment}>+{button1}</button>
                 <button onClick={this.decrease10}>Pay 10 points to change from +{button1} to +{button1 + 1}
                 </button>
@@ -50,7 +50,7 @@ class Score extends React.Component {
         else {
             return (
             <div>
-            <h2>Current Score:{score}</h2>
+            <h1>Current Score:{score}</h1>
             <h2>You Win!</h2>
             <button onClick={this.playAgain}>Play again?</button>
             </div>
