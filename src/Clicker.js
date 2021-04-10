@@ -1,8 +1,8 @@
 import React from "react";
 
 export default class Clicker extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             points: 0,
             pointsButton: 1,
@@ -38,9 +38,7 @@ export default class Clicker extends React.Component {
         if(points < 100){
             return (
                 <div>
-                    <p>
-                        <h1 role='heading'>Current Score: {points}</h1> 
-                    </p>
+                    <h1 role='heading'>Current Score: {points}</h1> 
                     <p>
                         <button onClick={this.addPoints}>+{pointsButton}</button>
                     </p>
@@ -52,12 +50,8 @@ export default class Clicker extends React.Component {
         } else {
             return (
                 <div>
-                    <p>
-                        <h1 role='heading'>Current Score: {points}</h1> 
-                    </p>
-                    <p>
-                        <h2>You Win!</h2>
-                    </p>
+                    <h1 role='heading'>Current Score: {points}</h1> 
+                    <h2>You Win!</h2>
                     <p>
                         <button onClick={this.playAgain}>Play again?</button>
                     </p>
