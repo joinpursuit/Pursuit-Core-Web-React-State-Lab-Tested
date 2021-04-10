@@ -45,7 +45,7 @@ describe("App", () => {
     );
   });
 
-  it("decreases score by 2 when the score button is pressed after increasing", () => {
+  it("decreases score by 10 when the score button is pressed after increasing", () => {
     for (let i = 0; i < 10; i += 1) {
       fireEvent.click(screen.getByText("+1"));
     }
@@ -65,7 +65,7 @@ describe("App", () => {
     expect(screen.getByRole("button")).toHaveTextContent("Play again?");
   });
 
-  it("resxets score to 0 after winning", () => {
+  it("resets score to 0 after winning", () => {
     for (let i = 0; i < 100; i += 1) {
       fireEvent.click(screen.getByText("+1"));
     }
