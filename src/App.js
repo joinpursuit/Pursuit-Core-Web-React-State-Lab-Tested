@@ -10,13 +10,15 @@ class App extends React.Component {
 
   increment=()=> {
     if(this.state.score >= 10){
-      const h2 = document.querySelector(".win")
+      const win = document.querySelector(".win")
       const play = document.querySelector(".play")
       const button = document.querySelector(".button")
       const button2 = document.querySelector(".button2")
+      const h2 = document.createElement("h2")
       button.style = "opacity: 0"
       button2.style = "opacity: 0"
       h2.textContent = "You Win!"
+      win.appendChild(h2)
       play.textContent= "Play Again?";
       debugger
     }
@@ -51,7 +53,7 @@ class App extends React.Component {
       <h1>Current Score: {score}</h1>
       <button className="button" onClick={this.increment}>+{incrementValue}</button>
       <button className="button2" onClick={this.increaseValue}>Pay 10 points to change from +{incrementValue} to +{incrementValue+1}</button>
-      <h2 className="win"></h2>
+      <div className="win"></div>
       <button className="play" onClick={this.resetGame}></button>
     </>)
   }
