@@ -9,28 +9,15 @@ class App extends React.Component {
   
 
   increment=()=> {
-    if(this.state.score >= 10){
-      const win = document.querySelector(".win")
-      const play = document.querySelector(".play")
-      const button = document.querySelector(".button")
-      const button2 = document.querySelector(".button2")
-      const h2 = document.createElement("h2")
-      button.style = "opacity: 0"
-      button2.style = "opacity: 0"
-      h2.textContent = "You Win!"
-      win.appendChild(h2)
-      play.textContent= "Play Again?";
-      debugger
+    if(this.state.score >= 100){
     }
     this.setState({ score: this.state.score + this.state.incrementValue })
   }
 
-    
-    
 
   increaseValue = () =>{
     const {score, incrementValue} = this.state;
-    if(score > 10){
+    if(score > 9){
       this.setState({
         score: score - 10, incrementValue: incrementValue + 1
       })
@@ -41,6 +28,13 @@ class App extends React.Component {
 
   resetGame = () =>{
     const {score, incrementValue} = this.state;
+    // const play = document.querySelector(".play")
+    //   const button = document.querySelector(".button")
+    //   const button2 = document.querySelector(".button2")
+    //   // const h2 = document.createElement("h2")
+    //   button.style = "opacity: 1";
+    //   button2.style = "opacity: 1";
+    //   h2.textContent = "";
     this.setState({
       score: 0, incrementValue: 1
     })
@@ -53,8 +47,8 @@ class App extends React.Component {
       <h1>Current Score: {score}</h1>
       <button className="button" onClick={this.increment}>+{incrementValue}</button>
       <button className="button2" onClick={this.increaseValue}>Pay 10 points to change from +{incrementValue} to +{incrementValue+1}</button>
-      <div className="win"></div>
-      <button className="play" onClick={this.resetGame}></button>
+      {score>=100 && <h2 className="win"></h2>}
+      <button className="play" onClick={this.resetGame}>Play Again</button>
     </>)
   }
 }
