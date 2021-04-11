@@ -5,51 +5,50 @@ import "./App.css";
 class App extends React.Component {
   state = { score: 0, incrementValue: 1 }
 
-
-  
-
-  increment=()=> {
-    if(this.state.score >= 100){
+  increment = () => {
+    const { score, incrementValue } = this.state;
+    this.setState({ score: score + incrementValue })
+    if (score >= 100) {
+      debugger
     }
-    this.setState({ score: this.state.score + this.state.incrementValue })
+
   }
 
-
-  increaseValue = () =>{
-    const {score, incrementValue} = this.state;
-    if(score > 9){
+  increaseValue = () => {
+    const { score, incrementValue } = this.state;
+    if (score > 9) {
       this.setState({
         score: score - 10, incrementValue: incrementValue + 1
       })
-    }else{
+    } else {
       alert("You can't afford that!")
     }
   }
 
-  resetGame = () =>{
-    const {score, incrementValue} = this.state;
-    // const play = document.querySelector(".play")
-    //   const button = document.querySelector(".button")
-    //   const button2 = document.querySelector(".button2")
-    //   // const h2 = document.createElement("h2")
-    //   button.style = "opacity: 1";
-    //   button2.style = "opacity: 1";
-    //   h2.textContent = "";
+  resetGame = () => {
+    const { score, incrementValue } = this.state;
     this.setState({
       score: 0, incrementValue: 1
     })
   }
 
-
   render() {
     const { score, incrementValue } = this.state;
-    return (<>
-      <h1>Current Score: {score}</h1>
-      <button className="button" onClick={this.increment}>+{incrementValue}</button>
-      <button className="button2" onClick={this.increaseValue}>Pay 10 points to change from +{incrementValue} to +{incrementValue+1}</button>
-      {score>=100 && <h2 className="win"></h2>}
-      <button className="play" onClick={this.resetGame}>Play Again</button>
-    </>)
+    if (score < 100) {
+      return (<>
+        <h1>Current Score: {score}</h1>
+        <button className="button" onClick={this.increment}>+{incrementValue}</button>
+        <button className="button2" onClick={this.increaseValue}>Pay 10 points to change from +{incrementValue} to +{incrementValue + 1}</button>
+      </>)
+    } else {
+      return (<>
+       <h1>Current Score: {score}</h1>
+        <h2 className="win">You Win!</h2>
+        <button className="play" onClick={this.resetGame}>Play again?</button>
+      </>)
+    }
+
+
   }
 }
 
