@@ -53,7 +53,7 @@ class CurrentScore extends React.Component {
 
     const wonGame = (
       <div>
-        <h2>You Win</h2> <br></br>
+        <h2>You Win!</h2> <br></br>
         <button onClick={this.resetScore}>Play again?</button>
       </div>
     );
