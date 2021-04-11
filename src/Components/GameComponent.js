@@ -13,11 +13,7 @@ class GameComponent extends React.Component {
   }
   increment = () => {
     // if (this.state.score >= 100) {
-    //   this.setState({ score: 0 });
-    //   this.setState({ startOver: "Play Again!" });
-    //   this.setState({ win: true });
-    // } else {
-    // }
+
     this.setState({ score: this.state.score + this.state.incrementAmount });
   };
 
@@ -31,9 +27,13 @@ class GameComponent extends React.Component {
     }
   };
 
-  // playAgain = ()=>{
-
-  // }
+  playAgain = () => {
+    this.setState({ startOver: "Play Again!" });
+    this.setState({ win: true });
+    this.setState({ score: 0 });
+    this.setState({incrementAmount: + 1});
+    this.setState({ newAmount: + 2});
+  };
 
   render() {
     if (this.state.score < 100) {
@@ -50,8 +50,12 @@ class GameComponent extends React.Component {
         </div>
       );
     } else {
-      return <h2>You Win!</h2>;
-      <button>Play again?</button>
+      return (
+        <section>
+          <h2>You Win!</h2>
+          <button onClick={this.playAgain}>Play again?</button>
+        </section>
+      );
     }
   }
 }
