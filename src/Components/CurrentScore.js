@@ -3,13 +3,11 @@ import React from "react"
 class CurrentScore extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {currentscore: 0, buttonscore: 1}
+        this.state = {currentscore: 0, buttonscore: 1, showtext: false}
     }
 
     increment = () => {
-        this.setState ((prevState)=>{
-            return {currentscore: prevState.currentscore +1}
-        });
+        this.setState ({currentscore: this.state.currentscore + this.state.buttonscore})
     }
 
     incrementButton = () => {
@@ -28,16 +26,47 @@ class CurrentScore extends React.Component {
         }
     }
 
+    // updateShowText = () => {    
+    //     const {currentscore} = this.state;
+    //     if(currentscore >=100) {
+    //         this.setState({showText: true})
+    //     }
+    // }
+
+    // removeText = () => {
+    //     const {currentscore} = this.state
+    //     this.setState({showText:false})
+    // }
+
+    // winnerScreen = () => {
+    //     const {currentscore} = this.state;
+    //     if (currentscore >=100) {   
+    //         this.setState ({currentscore: this.state.currentscore
+    //     } else {
+    //         if (currentscore >100)
+    //        return this.setState({showText:false})
+    //     }
+    // }
+
+
     render (){
-        const {currentscore} = this.state
+        const {currentscore, showtext} = this.state
+        
         return (
-            <div>
+            <div onLoad={this.winnerScreen}>
                 <h2>Current Score : {currentscore}</h2>
-                {/* Clicks: {currentscore} */}
+                <div></div>
                 <button onClick={this.increment}> +{this.state.buttonscore}</button>
-                {/* Clicks: {this.state.buttonscore} */}
+                
                 <br></br>
                 <button  class={ this.state.buttonscore} onClick={this.decrement}> Pay 10 points to change from +{this.state.buttonscore} to +{this.state.buttonscore +1} </button>
+                <br></br>
+                <div>
+                {currentscore>99 && <h2>You Win!</h2> }
+                {currentscore>99 && <button>Play Again?</button>}
+                </div>
+                
+                
             </div>
         )
     }
