@@ -3,15 +3,22 @@ import React from "react";
 class GameComponent extends React.Component {
   constructor(props) {
     super();
-    this.state = { score: 0, incrementAmount: 1, newAmount: 2 };
+    this.state = {
+      score: 0,
+      incrementAmount: 1,
+      newAmount: 2,
+      startOver: "",
+      win: false,
+    };
   }
   increment = () => {
-    if (this.state.score >= 100) {
-      this.setState({ score: 0});
-    } else {
-
-      this.setState({ score: this.state.score + this.state.incrementAmount });
-    }
+    // if (this.state.score >= 100) {
+    //   this.setState({ score: 0 });
+    //   this.setState({ startOver: "Play Again!" });
+    //   this.setState({ win: true });
+    // } else {
+    // }
+    this.setState({ score: this.state.score + this.state.incrementAmount });
   };
 
   incrementButton = () => {
@@ -23,17 +30,29 @@ class GameComponent extends React.Component {
       this.setState({ score: this.state.score - 10 });
     }
   };
+
+  // playAgain = ()=>{
+
+  // }
+
   render() {
-    return (
-      <div>
-        <h2>Current Score: {this.state.score}</h2>
-        <button onClick={this.increment}>+{this.state.incrementAmount}</button>
-        <button onClick={this.incrementButton}>
-          Pay 10 points to change from +{this.state.incrementAmount} to +
-          {this.state.newAmount}
-        </button>
-      </div>
-    );
+    if (this.state.score < 100) {
+      return (
+        <div>
+          <h2>Current Score: {this.state.score}</h2>
+          <button onClick={this.increment}>
+            +{this.state.incrementAmount}
+          </button>
+          <button onClick={this.incrementButton}>
+            Pay 10 points to change from +{this.state.incrementAmount} to +
+            {this.state.newAmount}
+          </button>
+        </div>
+      );
+    } else {
+      return <h2>You Win!</h2>;
+      <button>Play again?</button>
+    }
   }
 }
 
