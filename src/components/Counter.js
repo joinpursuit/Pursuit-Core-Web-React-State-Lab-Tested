@@ -1,4 +1,5 @@
 import React from "react";
+import './Counter.css'
 
 class Counter extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class Counter extends React.Component {
       if(this.state.score < 100){
           return(
 
-      <div>
+      <div className="counter">
         <h1>Current Score: {this.state.score}</h1>
         <button onClick={this.counter}> +{this.state.increment}</button>
         <button onClick={this.changeNumber}>
