@@ -1,1 +1,5 @@
 /* Your code here! */
+.click {
+    display: grid;
+    justify-content: center;
+}
