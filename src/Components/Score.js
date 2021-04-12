@@ -42,7 +42,7 @@ class Score extends React.Component {
 			<>
 				{pay ? (
 					<div className="score">
-						Current Score: {score}
+						<h2>Current Score: {score}</h2>
 						<button onClick={this.increment}>+{count}</button>
 						<button onClick={this.payTen}>
 							Pay 10 points to change from +{count} to +{count + 1}
@@ -53,7 +53,7 @@ class Score extends React.Component {
 				{win ? (
 					<div>
 						<h2>You Win!</h2>
-						<button onClick={this.reset}>Play Again?</button>
+						<button onClick={this.reset}>Play again?</button>
 					</div>
 				) : null}
 			</>
