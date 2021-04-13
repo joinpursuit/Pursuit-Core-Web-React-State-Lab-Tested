@@ -50,19 +50,19 @@ class CurrentScore extends React.Component {
 
 
     render (){
-        const {currentscore, showtext} = this.state
+        const {currentscore} = this.state
         
         return (
             <div onLoad={this.winnerScreen}>
                 <h2>Current Score : {currentscore}</h2>
-                <div></div>
+                <div>
                 <button onClick={this.increment}> +{this.state.buttonscore}</button>
-                
                 <br></br>
                 <button  class={ this.state.buttonscore} onClick={this.decrement}> Pay 10 points to change from +{this.state.buttonscore} to +{this.state.buttonscore +1} </button>
                 <br></br>
+                </div>
                 <div>
-                {currentscore>99 && <h2>You Win!</h2> }
+                {currentscore>99 && <h2>You Win!</h2>} 
                 {currentscore>99 && <button>Play Again?</button>}
                 </div>
                 
