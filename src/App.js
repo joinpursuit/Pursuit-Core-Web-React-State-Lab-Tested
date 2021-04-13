@@ -12,18 +12,22 @@ class App extends React.Component {
   }
 
   increaseScore = () => {
+    let increasedScore = this.state.count + this.state.increment
     this.setState({
-      count: this.state.count + this.state.increment
+      count: increasedScore
     })
   }
 
   payTen = () => {
+    let decreasedScore =  this.state.count - 10 
+    let increasedIncrement = this.state.increment + 1
+
     if (this.state.count < 10){
       window.alert("You can't afford that!")
     } else {
       this.setState({
-        count: this.state.count - 10 ,
-        increment: this.state.increment + 1
+        count: decreasedScore ,
+        increment: increasedIncrement
       })
     }
   }
