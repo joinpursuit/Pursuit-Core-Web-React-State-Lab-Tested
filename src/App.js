@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-
 import "./App.css";
 
 export default class App extends Component {
@@ -9,46 +8,48 @@ export default class App extends Component {
     this.state={
       totalNumber: 0,
       addnumber: 1,
-      addnumber2: 2 
+      addnumber2: 2
     }
+  }
+  increment=()=>{
+    this.setState({totalNumber:this.state.totalNumber + this.state.addnumber})
   }
   handleclick =()=>{
     let nextnum = this.state.totalNumber + this.state.addnumber
     if(nextnum >=10){
-      alert`You can't afford that!`
-    }else{
       this.setState({
-        totalNumber: nextnum}) 
+      totalNumber: this.state.totalNumber-10, addnumber: this.state.addnumber +1, addnumber2: this.state.addnumber2 +1}) 
+    }else{
+      alert(`You can't afford that!`)
     }
-
-    // this.setState({
-    //   totalNumber: nextnum}) 
   }
-  secondBTN =()=>{
-    let secadd = this.state.addnumber +1
-    let three = this.state.addnumber2 +1
 
+  playagain=()=>{
     this.setState({
-      addnumber: secadd,
-      addnumber2: three
-    })
-
+      totalNumber: 0,
+      addnumber: 1,
+      addnumber2: 2 })
   }
 
 
   render() {
-  let win = ""
-  if(this.state.totalNumber >=100){
-    win = 'YOU WIN'
-  }else{
+  if(this.state.totalNumber <100){
     return (
-      <div>
+      <div className='App'>
         <h1>Current Score: {this.state.totalNumber}</h1>
-        <button onClick={this.handleclick}>+{this.state.addnumber}</button>
-        <button onClick={this.secondBTN}>Pay 10 points to change from +{this.state.addnumber} to +{this.state.addnumber2} </button>
-        <h2>{win}</h2>
+        <button onClick={this.increment}>+{this.state.addnumber}</button>
+        <button onClick={this.handleclick}>Pay 10 points to change from +{this.state.addnumber} to +{this.state.addnumber2} </button>
       </div>
     )
+  }else{
+    return(
+      <div className='reset'>
+        <h1>Current Score: {this.state.totalNumber}</h1>
+        <h2 >You Win!</h2>
+        <button onClick={this.playagain}>Play again?</button>
+      </div>
+    )
+    
   }
     
   }
