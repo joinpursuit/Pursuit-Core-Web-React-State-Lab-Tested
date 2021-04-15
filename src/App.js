@@ -4,7 +4,11 @@ import "./App.css";
 
 class App extends React.Component {
   render() {
-    return "Hello, world!";
+    return (
+      <div>
+        <h1>Clicker React App</h1>
+      </div>
+    )
   }
 }
 
