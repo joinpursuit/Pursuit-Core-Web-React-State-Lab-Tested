@@ -1,1 +1,22 @@
-/* Your code here! */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .main div {
+  border: solid black 2px;
+} */
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.showing {
+  visibility: visible;
+}
