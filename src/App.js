@@ -3,35 +3,36 @@ import React from "react";
 import "./App.css";
 
 class App extends React.Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
 
     this.state = {
       totalNumber: 0,
-      value: 1
-    }
+      value: 1,
+    };
   }
 
   handleClick = () => {
-    this.setState({ totalNumber: this.state.totalNumber + this.state.value })
-  }
+    this.setState({ totalNumber: this.state.totalNumber + this.state.value });
+  };
 
   pointsClick = () => {
     if (this.state.totalNumber >= 10) {
-      this.setState({ totalNumber: this.state.totalNumber - 10, value: this.state.value + 1})
+      this.setState({
+        totalNumber: this.state.totalNumber - 10,
+        value: this.state.value + 1,
+      });
+    } else {
+      alert("You can't afford that!");
     }
-    else {
-      alert("You can't afford that!"); 
-    }
-
-  }
+  };
 
   resetGame = () => {
-    this.setState({ totalNumber: 0, value: 1 })
-  }
+    this.setState({ totalNumber: 0, value: 1 });
+  };
 
   render() {
-    if (this.state.totalNumber < 100){
+    if (this.state.totalNumber < 100) {
       return (
         <div>
           <h1>Current Score: {this.state.totalNumber}</h1>
@@ -42,17 +43,15 @@ class App extends React.Component {
           </button>
         </div>
       );
-    }
-    else {
-      return(
+    } else {
+      return (
         <div>
           <h1>Current Score: {this.state.value}</h1>
           <h2>You Win!</h2>
           <button onClick={this.resetGame}>Play again?</button>
         </div>
-      )
+      );
     }
-    
   }
 }
 
