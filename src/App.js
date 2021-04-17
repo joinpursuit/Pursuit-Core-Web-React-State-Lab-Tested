@@ -46,7 +46,7 @@ class App extends React.Component {
       <div>
         <h1>Current Score: {this.state.totalNumber}</h1>
         <button onClick={this.handleClick}>+{this.state.incrementer}</button>
-        <button onClick={this.subtract}>pay 10 points to increase from +{this.state.incrementer} to +{this.state.incrementer + 1}</button>
+        <button onClick={this.subtract}>Pay 10 points to change from +{this.state.incrementer} to +{this.state.incrementer + 1}</button>
       </div>
     )
   } else {
