@@ -5,7 +5,11 @@ import Score from "./Components/Score";
 
 class App extends React.Component {
   render() {
-    return <Score />;
+    return (
+      <div className="App">
+    <Score />
+    </div>
+    )
   }
 }
 
