@@ -19,7 +19,23 @@ class Score extends React.Component {
     }
   };
 
+  reset = () => {
+    this.setState({ score: (this.state.score = 0) });
+    this.setState({ increment: (this.state.increment = 1) });
+  };
+
   render() {
+    
+    if (this.state.score >= 100) {
+      return (
+        <div>
+          <h2>You Win!</h2>
+          <h1>Current Score: {this.state.score}</h1>
+          <button onClick={this.reset}>Play again?</button>
+        </div>
+      )
+    }
+    else {
     return (
       <div>
         <h1>Current Score: {this.state.score}</h1>
@@ -31,6 +47,6 @@ class Score extends React.Component {
       </div>
     );
   }
-}
+}}
 
 export default Score;
