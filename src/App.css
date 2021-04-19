@@ -1,4 +1,25 @@
 /* Your code here! */
-h1 {
+body {
     text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    text-decoration: 3px solid lightblue underline;
+    font-size: 5em;
+}
+
+button {
+    background-color: lightblue;
+    color: white;
+    outline: none;
+    border-radius: 10px;
+    font-weight: bold;
+    height: 5em;
+    width: 25em;
+    margin: 1em;
+}
+button:hover {
+    text-transform: uppercase;
+    border-radius: 50%;
 }
