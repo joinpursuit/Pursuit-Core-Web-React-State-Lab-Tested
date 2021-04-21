@@ -33,26 +33,24 @@ class App extends React.Component {
     })
   }
   render() {
-    if(this.state.currentValue > 100) {
+    if(this.state.currentValue < 100) {
       return(
-      <>
+      <div>
         <h1>Current Score: {this.state.currentValue}</h1>
+        <button onClick={this.buttonClick}>+{this.state.addedValue}</button>
+        <button onClick={this.pointChangeClick}>Pay 10 points to change from +{this.state.addedValue} to +{(this.state.addedValue + 1)}</button>
 
-        <h2>You Win!</h2>
-
-        <button onClick={this.restart}>Play again?</button>
-      </>
+      </div>
       )
     }
     else {
       return(
       <>
         <h1>Current Score: {this.state.currentValue}</h1>
-
-        <button onClick={this.buttonClick}>+{this.state.addedValue}</button>
-
-        <button onClick={this.pointChangeClick}>Pay 10 points to change from +{this.state.addedValue} to +{(this.state.addedValue + 1)}</button>
+        <h2>You Win!</h2>
+        <button onClick={this.restart}>Play again?</button>
       </>
+      
       )
     }
   }
