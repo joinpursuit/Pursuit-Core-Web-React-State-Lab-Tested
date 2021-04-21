@@ -51,7 +51,7 @@ class App extends React.Component {
 
         <button onClick={this.buttonClick}>+{this.state.addedValue}</button>
 
-        <button onClick={this.pointChangeClick}>Pay 10 points to change from +{this.state.addedValue} to +{(this.state.value + 1)}</button>
+        <button onClick={this.pointChangeClick}>Pay 10 points to change from +{this.state.addedValue} to +{(this.state.addedvalue + 1)}</button>
       </>
       )
     }
