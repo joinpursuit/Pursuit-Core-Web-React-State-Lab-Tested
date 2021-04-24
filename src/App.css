@@ -1,1 +1,12 @@
-/* Your code here! */
+
+.game{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    
+}
+.won{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+}
