@@ -1,65 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 
-class CurrentScore extends React.Component {
-  constructor(props) {
-    super();
-    this.state = { count: 0, increment: 1 };
-  }
+// with hooks 
 
-  resetScore = () => {
-    this.setState((prevState) => {
-      return {
-        count: prevState.count - prevState.count,
-        increment: prevState.increment - prevState.increment + 1,
-      };
-    });
+const CurrentScore = () => {
+  const [count, setCount] = useState(0);
+  const [increment, setIncrement] = useState(1);
+
+  const resetScore = () => {
+    setCount(0);
+    setIncrement(1);
   };
 
-  changeScore = () => {
-    if (this.state.count <= 100) {
-      this.setState((prevState) => {
-        return { count: prevState.count + this.state.increment };
+  const changeScore = () => {
+    if (count < 100) {
+      setCount((prevCount) => {
+        return prevCount + increment 
+
       });
     } else {
       return;
     }
   };
 
-  tenPointChange = () => {
-    if (this.state.count >= 10) {
-      this.setState((prevState) => {
-        return {
-          increment: prevState.increment + 1,
-          count: this.state.count - 10,
-        };
-      });
-    } else {
+  const tenPointChange = () => {
+    if (count >= 10) {
+          setIncrement((prevIncrement) => prevIncrement + 1 ) 
+          setCount((prevCount)=> prevCount - 10) 
+        } else {
       window.alert("You can't afford that!");
     }
-  };
-
-  render() {
-    const gamePlay = (
-      <div>
-        <h2>Current Score: {this.state.count}</h2> <br></br>
-        <button onClick={this.changeScore}>+{this.state.increment}</button>{" "}
-        <br></br>
-        <button onClick={this.tenPointChange}>
-          Pay 10 points to change from +{this.state.increment} to +
-          {this.state.increment + 1}
-        </button>
-      </div>
-    );
-
-    const wonGame = (
-      <div>
-        <h2>You Win!</h2> <br></br>
-        <button onClick={this.resetScore}>Play again?</button>
-      </div>
-    );
-
-    return <div>{this.state.count < 100 ? gamePlay : wonGame}</div>;
   }
-}
+  
+
+  const gamePlay = (
+    <div>
+      <h2>Current Score: {count}</h2> <br></br>
+      <button onClick={changeScore}>+{increment}</button> <br></br>
+      <button onClick={tenPointChange}>
+        Pay 10 points to change from +{increment} to +{increment + 1}
+      </button>
+    </div>
+  );
+
+  const wonGame = (
+    <div>
+      <h2>You Win!</h2> <br></br>
+      <button onClick={resetScore}>Play again?</button>
+    </div>
+  );
+
+  return <div>{count < 100 ? gamePlay : wonGame}</div>;
+};
 
 export default CurrentScore;
