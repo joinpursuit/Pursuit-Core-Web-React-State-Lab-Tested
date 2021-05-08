@@ -1,38 +1,38 @@
-import React from "react";
+import React, { useState} from "react";
 import './Counter.css'
 
-class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { score: 0, increment: 1, index: 0, classRest: ["reset", "win"]};
-  }
-  changeNumber = () => {
-    if (this.state.score >= 10) {
-      this.setState({ score: this.state.score - 10 });
-      this.setState({ increment: this.state.increment + 1 });
+const Counter =()=> {
+  const [score, setScore] = useState(0)
+  const [increment, setIncrement] = useState(1)
+    // this.state = { score: 0, increment: 1, index: 0, classRest: ["reset", "win"]};
+
+  const changeNumber = () => {
+    if (score >= 10) {
+      setScore( score -10 );
+      setIncrement(increment + 1 );
     } else {
       alert("You can't afford that!");
     }
   };
 
-  counter = () => {
-    this.setState({ score: this.state.score + this.state.increment });
+  const counter = () => {
+    setScore(score + increment );
     //   this.state.score++;
   };
-  reset = () => {
-    this.setState({ score: (this.state.score = 0) });
-    this.setState({ increment: (this.state.increment = 1) });
+  const reset = () => {
+    setScore(0);
+    setIncrement(1);
   };
-  render() {
-      if(this.state.score < 100){
+
+      if(score < 100){
           return(
 
       <div className="counter">
-        <h1>Current Score: {this.state.score}</h1>
-        <button onClick={this.counter}> +{this.state.increment}</button>
-        <button onClick={this.changeNumber}>
-          Pay 10 points to change from +{this.state.increment} to +
-          {this.state.increment + 1}
+        <h1>Current Score: {score}</h1>
+        <button onClick={counter}> +{increment}</button>
+        <button onClick={changeNumber}>
+          Pay 10 points to change from +{increment} to +
+          {increment + 1}
         </button>
         </div>
           )
@@ -41,11 +41,11 @@ class Counter extends React.Component {
           return (
               <div>
               <h2>You Win!</h2>
-              <button onClick={this.reset}>Play again?</button>
+              <button onClick={reset}>Play again?</button>
             </div>
           );
         }
-      }
+      
 }
 
 export default Counter;
