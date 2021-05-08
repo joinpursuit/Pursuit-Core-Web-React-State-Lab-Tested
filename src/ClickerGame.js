@@ -25,7 +25,7 @@ const ClickerGame =() =>{
         setButton1(1)
     } 
 
-        if(score<100){
+        if(score<=100){
             return (
             <div>
                 <h1>Current Score: {score}</h1>
