@@ -3,10 +3,17 @@ import GameComponent from "./Components/GameComponent";
 
 import "./App.css";
 
-class App extends React.Component {
-  render() {
-    return <GameComponent />;
-  }
+const App =()=>{
+  return (<div>
+    <GameComponent/>
+  </div>
+  )
 }
+
+// class App extends React.Component {
+//   render() {
+//     return <GameComponent />;
+//   }
+// }
 
 export default App;
