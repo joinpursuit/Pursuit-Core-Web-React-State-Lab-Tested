@@ -1,16 +1,16 @@
 import React from "react";
-import ClickerHooks from "./Components/ClickerHooks";
+import Counter from "./Components/counter";
 
 import "./App.css";
 
-const App = () => {
-  
+class App extends React.Component {
+  render() {
     return (
       <div>
-        <ClickerHooks />
+        <Counter />
       </div>
     );
-  
+  }
 }
 
 export default App;
