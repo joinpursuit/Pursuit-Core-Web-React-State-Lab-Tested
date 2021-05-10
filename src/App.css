@@ -1,1 +1,6 @@
-/* Your code here! */
+.win{
+    display: block;
+}
+.reset{
+    display: none;
+}
