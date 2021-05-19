@@ -4,10 +4,6 @@
   align-items: center;
 }
 
-/* .main div {
-  border: solid black 2px;
-} */
-
 .center {
   display: flex;
   justify-content: center;
