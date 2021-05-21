@@ -1,7 +1,46 @@
-import React from "react";
-
+// import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
+function App() {
+  const [ score, setScore ] = useState(0)
+  const [ upgrade, setUpgrade ] = useState(1)
+  
+  const increaseScore = () => setScore(score + upgrade);
+
+  const payToUpgrade = () => {
+    if (score < 10) return alert("You can't afford that!");
+    setScore(score - 10);
+    setUpgrade(upgrade + 1);
+  }
+
+  const resetScore = () => {
+    setScore(0);
+    setUpgrade(1);
+  }
+
+  const play = (
+    <>
+      <button onClick={increaseScore}>+{upgrade}</button>
+      <button onClick={payToUpgrade}>Pay 10 points to change from +{upgrade} to +{upgrade + 1}</button>
+    </>
+  )
+  const win = (
+    <>
+      <h2>You Win!</h2>
+      <button onClick={resetScore}>Play again?</button>
+    </>
+  )
+  const gameDiv = score < 100 ? play : win;
+  
+  return (
+    <div>
+      <h1>Current Score: {score}</h1>
+      {gameDiv}
+    </div>
+  )
+}
+/*
 class App extends React.Component {
   constructor() {
     super()
@@ -48,5 +87,5 @@ class App extends React.Component {
     )
   }
 }
-
+*/
 export default App;
