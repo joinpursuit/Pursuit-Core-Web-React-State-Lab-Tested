@@ -1,64 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
-class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      score: 0,
-      increment: 1
-    }
-  }
+const App = () => {
+  const [score, setScore] = useState(0)
 
-  increaseScore = () => {
-    const newScore = (this.state.score + this.state.increment)
-    this.setState({
-      score: newScore
-    })
+  const [increment, setIncrement] = useState(1)
+
+  const increaseScore = (increment) => {
+    setScore(score + increment)
   };
 
-  decreaseScore = () => {
-    const reduceScore = this.state.score
-    const addPoints = this.state.increment
-    if (this.state.score < 10) {
+  const decreaseScore = (num) => {
+    if (score < 10) {
       alert("You can't afford that!")
     } else {
-      this.setState({
-        score: reduceScore - 10,
-        increment: addPoints + 1
-      })
+      setIncrement(increment + 1)
+      setScore(score - num)
     }
   };
 
-  playAgain = () => {
-    this.setState({
-      score: 0,
-      increment: 1
-    })
+  const playAgain = (num) => {
+    setScore(score - score)
+    setIncrement(num)
   }
 
 
-  render() {
-    const {score, increment} = this.state
-    if (this.state.score < 100) {
-      return (
-        <div>
-          <h1>Current Score: {score}</h1>
-          <button onClick={this.increaseScore}>+{increment}</button>
-          <button onClick={this.decreaseScore}>Pay 10 points to change from +{increment} to +{increment + 1}</button>
-        </div>
+  if (score < 100) {
+    return (
+      <div>
+        <h1>Current Score: {score}</h1>
+        <button onClick={() => increaseScore(increment)}>+{increment}</button>
+        <button onClick={() => decreaseScore(10)}>Pay 10 points to change from +{increment} to +{increment + 1}</button>
+      </div>
 
-      )
-    } else {
-      return (
-        <div>
-          <h1>Current Score: {score}</h1>
-          <h2>You Win!</h2>
-          <button onClick={this.playAgain}>Play again?</button>
-        </div>
-      )
-    }
-  };
+    )
+  } else {
+    return (
+      <div>
+        <h1>Current Score: {score}</h1>
+        <h2>You Win!</h2>
+        <button onClick={() => playAgain(1)}>Play again?</button>
+      </div>
+    )
+  }
 };
 
 export default App;
