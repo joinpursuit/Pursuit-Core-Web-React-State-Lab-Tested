@@ -1,8 +1,8 @@
-import React from "react";
+import {useState} from "react";
 
 import "./App.css";
 
-class App extends React.Component {
+/* class App extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -57,3 +57,46 @@ class App extends React.Component {
 }
 
 export default App;
+*/
+
+export default function App() {
+  const [currentValue, setCurrentValue] = useState(0)
+  const [addedValue, setAddedValue] = useState(1)
+  const buttonClick = () => {
+    setCurrentValue(currentValue + addedValue)
+  }
+  const pointChangeClick = () => {
+    if (currentValue >= 10) {
+        setCurrentValue(currentValue - 10)
+        setAddedValue(addedValue + 1)
+    }
+    else {
+      alert(`You can't afford that!`)
+    }
+  }
+  const restart = () => {
+      setCurrentValue(0)
+      setAddedValue(1)
+  }
+  if(currentValue < 100) {
+    return(
+    <div>
+      <h1>Current Score: {currentValue}</h1>
+      <button onClick={() => buttonClick()}>+{addedValue}</button>
+      <button onClick={() => pointChangeClick()}>Pay 10 points to change from +{addedValue} to +{(addedValue + 1)}</button>
+
+    </div>
+    )
+  }
+  else {
+    return(
+    <>
+      <h1>Current Score: {currentValue}</h1>
+      <h2>You Win!</h2>
+      <button onClick={() => restart()}>Play again?</button>
+    </>
+    
+    )
+  }
+}
+
