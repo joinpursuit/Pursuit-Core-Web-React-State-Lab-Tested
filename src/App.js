@@ -1,59 +1,50 @@
 import React from 'react'
-
+import { useState } from 'react'
 import './App.css'
 
-class App extends React.Component {
-	constructor() {
-		super()
+const App = () => {
+	const [score, setScore] = useState(0)
 
-		this.state = {
-			score: 0,
-			value: 1,
-		}
+	const [value, setValue] = useState(1)
+
+	const handleClick = (value) => {
+		setScore(score + value)
 	}
 
-	handleClick = () => {
-		this.setState({ score: this.state.score + this.state.value })
-	}
-
-	payPoints = () => {
-		if (this.state.score < 10) {
+	const payPoints = (num) => {
+		if (score < 10) {
 			alert("You can't afford that!")
 		} else {
-			this.setState({
-				score: this.state.score - 10,
-				value: this.state.value + 1,
-			})
+			setScore(score - num)
+			setValue(value + 1)
 		}
 	}
 
-	youWin = () => {
-    this.setState({
-      score: 0,
-      value: 1
-    })
-  }
+	const youWin = (num) => {
+		setScore(score - score)
+		setValue(num)
+	}
 
-	render() {
-		if (this.state.score < 100) {
-			return (
-				<div>
-					<h2>Current Score: {this.state.score}</h2>
-					<button onClick={this.handleClick}>+{this.state.value}</button>
-					<button onClick={this.payPoints}>
-						Pay 10 points to change from +{this.state.value} to +{this.state.value + 1}
-					</button>
-				</div>
-			)
-		} else {
-      return (
-        <div>
-          <h1>Current Score: {this.state.score}</h1>
-          <h2>You Win!</h2>
-          <button onClick={this.youWin}>Play again?</button>
-        </div>
-      )
-    }
+	if (score < 100) {
+		return (
+			<div className='App'>
+				<h2 style={{ textAlign: 'center' }}>Current Score: {score}</h2>
+				<button style={{ color: 'navy' }} onClick={() => handleClick(value)}>
+					+{value}
+				</button>
+				<button onClick={() => payPoints(10)}>
+					Pay 10 points to change from +{value} to +{value + 1}
+				</button>
+			</div>
+		)
+	} else {
+		return (
+			<div className='App'>
+				<h1>Current Score: {score}</h1>
+				<h2>You Win!</h2>
+				<button onClick={() => youWin(1)}>Play again?</button>
+			</div>
+		)
 	}
 }
 
