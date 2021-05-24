@@ -1,1 +1,11 @@
-/* Your code here! */
+body{
+    text-align: center;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+
+}
