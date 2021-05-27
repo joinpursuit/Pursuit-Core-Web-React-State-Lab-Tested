@@ -1,48 +1,46 @@
-import React from "react";
+import React from 'react'
+import { useState } from 'react'
 
-import "./App.css";
+export default function App() {
+  const [score, setScore] = useState(0)
+  const [pay, setPay] = useState(1)
 
-class App extends React.Component {
-  constructor() {
-    super();
+  const onClick = (e) => {
+    e.preventDefault()
+    setScore(score + pay)
+  }
 
-    //beginning state
-    this.state = {
-      totalNumber: 0
+  const buy = (e) => {
+    e.preventDefault()
+    if (score > 10) {
+      setPay(pay + 1)
+      setScore(score-10)
     }
-    
-    
-  }
-
-  handleClick = () => {
-    // this.totalNumber += 1
-    console.log(this.totalNumber)
-    //what ever set set runs is what it is equal to
-    //count by 5
-    this.setState({
-      totalNumber: this.state.totalNumber + 5
-    })
-  }
-
-  handleBuy = () => {
-    if (this.totalNumber > 10) {
-      this.setState({
-        totalNumber: this.state.totalNumber - 10
-      })
-
+    else {
+      alert(`You can't afford that!`)
     }
   }
 
-
-  render() {
-    return(
-      <div>
-        <h1>Current Score: {this.state.totalNumber}</h1>
-        <button onClick={ this.handleClick }>+1</button>
-        <button>Pay 10 points to increase from +1 to +2</button>
-      </div>
-    )
+  const restart = (e) => {
+    e.preventDefault()
+    setScore(0)
+    setPay(1)
   }
+  return (
+    <div>
+      <h1>Current Score: {score}</h1>
+      {
+        (score >= 100) ?
+          <>
+            <h1>You Win!</h1>
+            <button onClick={restart}>Play Again?</button>
+          </>
+          :
+          <>
+            <button onClick = {onClick}>+{pay}</button>
+            <button onClick={buy}>Pay 10 points to change from +{pay} to +{pay + 1}</button>
+          </>
+      }
+    </div>
+  )
 }
-
-export default App;
