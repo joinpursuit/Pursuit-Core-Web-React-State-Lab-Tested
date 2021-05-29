@@ -17,6 +17,7 @@ const App = () => {
       alert("You can't afford that!")
     }
   }
+  
 
   const resetGame = () => {
     setScore(0);
