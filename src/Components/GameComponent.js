@@ -40,6 +40,8 @@ const GameComponent = () => {
       <button onClick={resetScore}>Play again?</button>
     </div>
   );
+
+  
   return <div>{count < 100 ? gamePlay : wonGame}</div>;
 };
 export default GameComponent;
