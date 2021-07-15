@@ -30,16 +30,15 @@ export default function App() {
     <div>
       <h1>Current Score: {score}</h1>
       {
-        (score >= 100) ?
-          <>
-            <h1>You Win!</h1>
-            <button onClick={restart}>Play Again?</button>
-          </>
-          :
-          <>
-            <button onClick = {onClick}>+{pay}</button>
-            <button onClick={buy}>Pay 10 points to change from +{pay} to +{pay + 1}</button>
-          </>
+        (score >= 100)
+          ? <>
+              <h1>You Win!</h1>
+              <button onClick={restart}>Play Again?</button>
+            </>
+          : <>
+              <button onClick = {onClick}>+{pay}</button>
+              <button onClick={buy}>Pay 10 points to change from +{pay} to +{pay + 1}</button>
+            </>
       }
     </div>
   )
